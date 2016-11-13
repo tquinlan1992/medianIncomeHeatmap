@@ -22,14 +22,14 @@ function getLanguageSelection() {
     return preferredLanguage || defaultLanguageSelection;
 }
 
-function getLanguageJSONPromise(deferred) {
+function getLanguageJSONPromise(done) {
     request(resolveUrl("app/resourceLanguages/" + getLanguageSelection() + ".json"), {
         json: true
     }, function(error, response, body) {
         if (!error && response.statusCode === 200) {
-            deferred.resolve(body);
+            done(body);
         }
-        deferred.resolve(error);
+        done(error);
     });
 }
 
@@ -41,7 +41,7 @@ const app = angular.module("resource-languages", []);
 app.service("getLanguageJSON", ($q) => {
     "ngInject";
     const deferred = $q.defer();
-    getLanguageJSONPromise(deferred);
+    getLanguageJSONPromise(deferred.resolve);
     return deferred.promise;
 });
 
