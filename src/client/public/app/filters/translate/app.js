@@ -1,14 +1,16 @@
 const angular = require("angular");
 const _ = require("lodash");
 
-const app = angular.module("translate-test-module", []);
+const app = angular.module("translate-module", [
+    require("../../services/resourceLanguages/app")
+]);
 let languageResource;
 
 function getResourceValue(key) {
     return _.get(languageResource, key);
 }
 
-app.filter("resourceLanguage", (getLanguageJSON) => {
+app.filter("translate", (getLanguageJSON) => {
 
     function filter(input) {
         if (!languageResource) {
@@ -24,4 +26,5 @@ app.filter("resourceLanguage", (getLanguageJSON) => {
     filter.$stateful = true;
     return filter;
 });
-module.exports = "translate-test-module";
+
+module.exports = "translate-module";
