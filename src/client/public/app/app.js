@@ -1,6 +1,6 @@
 const angular = require("angular");
 
-angular.module('app', [   // jshint ignore:line
+angular.module('app', [
     require('angular-animate'),
     require("angular-resource"),
     require("angular-material"),
@@ -8,6 +8,7 @@ angular.module('app', [   // jshint ignore:line
     require('angular-messages'),
     require("./configs/app"),
     require("./components/app"),
-    "envConfigs",
-    "translateProvider"
+    require("./filters/app"),
+    require("./services/app"),
+    "envConfigs"
 ]);

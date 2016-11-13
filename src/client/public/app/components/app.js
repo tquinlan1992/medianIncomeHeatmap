@@ -1,6 +1,6 @@
 const angular = require("angular");
 
-angular.module("components-module", [   // jshint ignore:line
+angular.module("components-module", [   
     require("./sample/app")
 ]);
 

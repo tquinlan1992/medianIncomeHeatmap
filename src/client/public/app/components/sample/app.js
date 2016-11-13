@@ -1,37 +1,36 @@
 const angular = require("angular");
 
-const app = angular.module("sampleComponentModule", [
-]);
+const app = angular.module("sampleComponentModule", []);
 
 app.component("sampleComponentIndex", {
-        bindings: {
-            test: '@',
-            objectTest: "="
-        },
-        templateUrl: "/app/components/sample/index.html",
-        controller: function(envConfigs, sampleComponentApi) {
-            console.log('envConfigs', envConfigs);
-            console.log('this.test', this.test);
-            console.log('this.objectTest', this.objectTest);
-            sampleComponentApi.getSampleJson().then(successResponse => {
-                console.log('successResponse from server api confured from env variable', successResponse);
+    bindings: {
+        test: '@',
+        objectTest: "="
+    },
+    templateUrl: "/app/components/sample/index.html",
+    controller: function($scope, sampleComponentApi) {
+        sampleComponentApi.getSampleJson().then(successResponse => {
+            $scope.sampleJSON = successResponse.data;
+                console.log('successResponse from server api confured from /sample.json', successResponse);
             },
             errorResponse => {
                 console.log('errorResponse', errorResponse);
             });
-        }
+    }
 });
 
-app.factory("sampleComponentApi", ($http, envConfigs) => {
-        "ngInject";
+app.factory("sampleComponentApi", ($http, getEnvConfigs) => {
+    "ngInject";
+    const factory = {};
 
-        const factory = {};
-
-        factory.getSampleJson = function() {
+    factory.getSampleJson = function() {
+        return getEnvConfigs.then(envConfigs => {
+            console.log('gotConfigs', envConfigs);
             return $http.get(envConfigs.serverUrl + "/sample.json");
-        };
+        });
+    };
 
-        return factory;
+    return factory;
 });
 
 

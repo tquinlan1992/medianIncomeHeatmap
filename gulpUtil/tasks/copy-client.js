@@ -14,6 +14,13 @@ module.exports = {
             .pipe(gulp.dest("build/client", {})).on("end", () => {
             });
     },
+    copy: function(src, base, dest) {
+        return gulp.src(src, {
+                base: base
+            })
+            .pipe(gulp.dest(dest, {})).on("end", () => {
+            });
+    },
     copyCssDependencies: function() {
         const src = [
             "./node_modules/animate.css/animate.min.css",

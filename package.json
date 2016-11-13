@@ -8,6 +8,7 @@
     "watch-build-client": "gulp watch-build-client",
     "nodemon-client-server": "API_SERVER_URL=http://localhost:3000 nodemon build/client/server.js",
     "nodemon-client-server-and-watch-build-client": "concurrently -r 'npm run build-client' 'npm run watch-build-client' 'npm run nodemon-client-server'",
+    "watch-development-environment": "concurrently -r 'npm run nodemon-client-server-and-watch-build-client' 'npm run nodemon-api-server'",
     "nodemon-api-server": "nodemon src/server/server.js"
   },
   "author": "",
@@ -56,6 +57,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-watch": "^4.3.10",
     "jshint": "^2.9.4",
+    "request": "^2.78.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }

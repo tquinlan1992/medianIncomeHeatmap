@@ -1,6 +1,6 @@
 const angular = require("angular");
 
-const app = angular.module("configs-module", [   // jshint ignore:line
+angular.module("configs-module", [   
     require("./states/app")
 ]);
 
