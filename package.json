@@ -8,8 +8,8 @@
     "watch-build-client": "gulp watch-build-client",
     "nodemon-client-server": "API_SERVER_URL=http://localhost:3000 nodemon build/client/server.js",
     "nodemon-client-server-and-watch-build-client": "concurrently -r 'npm run build-client' 'npm run watch-build-client' 'npm run nodemon-client-server'",
-    "watch-development-environment": "concurrently -r 'npm run nodemon-client-server-and-watch-build-client' 'npm run nodemon-api-server'",
-    "nodemon-api-server": "nodemon src/server/server.js"
+    "nodemon-api-server": "nodemon src/server/server.js",
+    "watch-development-environment": "concurrently -r 'npm run nodemon-client-server-and-watch-build-client' 'npm run nodemon-api-server'"
   },
   "author": "",
   "license": "ISC",
