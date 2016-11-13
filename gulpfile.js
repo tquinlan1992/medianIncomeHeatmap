@@ -36,7 +36,7 @@ gulp.task('browserify-client-unminified', ["jshint-src", "clean-client-js", "cle
 gulp.task('browserify-client-minified', ["jshint-src", "clean-client-js", "clean-client-map"], createBrowserifyTask.minJsStream(srcAppPath + './app.js', "app", publicBuildAppPath));
 
 
-gulp.task("copy-server", ["clean-client-server"], createCopyTask(srcClientPath + "./server.js", srcClientPath, clientBuildPath));
+gulp.task("copy-server", ["clean-client-server"], createCopyTask(srcClientPath + "./**.js", srcClientPath, clientBuildPath));
 gulp.task("copy-client-json", ["clean-client-json"], createCopyTask(srcPublicPath + "./**/*.json", srcPublicPath, publicBuildPath));
 gulp.task("copy-html", ["clean-client-html"], createCopyTask(srcPublicPath + "./**/*.html", srcPublicPath, publicBuildPath));
 gulp.task("copy-css-dependencies", ["clean-client-css-dependencies"], createCopyTask([

@@ -1,5 +1,5 @@
 const request = require('request');
-const languagesConfigsJSON = require("../../languagesConfigs.json");
+const languagesConfigsJSON = require("../../resourceLanguages/languagesConfigs.json");
 const resolveUrl = require("resolve-url");
 
 class GetLanguages {

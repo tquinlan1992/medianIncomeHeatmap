@@ -10,12 +10,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-app.get("/sample.json", (req, res) => {
-    res.json({
-        firstName: "Tom",
-        lastName: "Quinlan"
-    });
-});
+app.use(express.static(__dirname + '/public'));
+
 
 app.get("/", (req, res) => {
     res.send("hello from the angular-gulp-template api server");

@@ -1,14 +1,12 @@
 const express = require('express');
 const app = express();
+const envConfigs = require("./envConfigs");
 
 app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 
 app.get("/app/envConfigs.json", (req, res) => {
-    const envConfigs = {
-        serverUrl: process.env.API_SERVER_URL
-    };
     res.send(envConfigs);
 });
 
