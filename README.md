@@ -20,7 +20,7 @@ This is a template that sets up a client server with a gulp build project utiliz
                - This will build the client public code into ```build/client/public/```
                - ```src/client/public/app/index.html``` is copied into ```build/client/public/app/index.html```
                - The ```src/client/public/app/app.js``` is browserified into ```build/client/public/app/app.js```
-               - The ```src/client/public/app/sass/custom/index.scss``` is compiled and minified into ```build/client/public/app/css/custom/index.min.css
+               - The ```src/client/public/app/sass/custom/index.scss``` is compiled and minified into ```build/client/public/app/css/custom/index.min.css```
                - ```angular-material.css```, ```animate.css```, and ```font-awesome.css``` are compiled and minified into ```build/client/public/app/css/dependencies/```
                - ```font-awesome``` fonts are compiled and minified into ```build/client/public/app/css/dependencies/```
                - ```src/client/public/app/resourceLanguages``` is copied into ```build/client/public/app/resourceLanguages```
