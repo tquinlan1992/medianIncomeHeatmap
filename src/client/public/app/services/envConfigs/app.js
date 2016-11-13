@@ -7,7 +7,6 @@ function getEnvConfigsPromise(deferred) {
         json: true
     }, function(error, response, body) {
         if (!error && response.statusCode === 200) {
-            console.log('resolveUrl("envConfigs")', resolveUrl("app/envConfigs.json"));
             console.log('gotEnvConfgis', body);
             deferred.resolve(body);
         }

@@ -25,7 +25,6 @@ app.factory("sampleComponentApi", ($http, getEnvConfigs) => {
 
     factory.getSampleJson = function() {
         return getEnvConfigs.then(envConfigs => {
-            console.log('gotConfigs', envConfigs);
             return $http.get(envConfigs.serverUrl + "/sample.json");
         });
     };

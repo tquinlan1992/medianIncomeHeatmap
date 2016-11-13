@@ -7,6 +7,7 @@ function getLanguageSelection() {
     let defaultLanguageSelection = availableLanguages[0];
     let preferredLanguage = "";
     const browserLanguages = navigator.languages || []; //jshint ignore:line
+    console.log('browserLanguages', browserLanguages);
     browserLanguages.every(languageOption => {
         let languageResourceOption = availableLanguages.find(availableLanguage => {
             return availableLanguage === languageOption;
