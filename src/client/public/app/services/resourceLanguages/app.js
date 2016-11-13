@@ -1,5 +1,6 @@
 const request = require('request');
-const availableLanguages = require("../../availableLanguages");
+const languagesConfigs = require("../../languagesConfigs.json");
+const availableLanguages = languagesConfigs.available;
 const resolveUrl = require("resolve-url");
 
 

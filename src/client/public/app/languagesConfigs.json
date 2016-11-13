@@ -1,0 +1,8 @@
+{
+    "available": [
+        "en-US",
+        "es-US",
+        "es"
+    ],
+    "default": "en-US"
+}
