@@ -1,36 +1,47 @@
 const request = require('request');
-const languagesConfigs = require("../../languagesConfigs.json");
-const availableLanguages = languagesConfigs.available;
+const languagesConfigsJSON = require("../../languagesConfigs.json");
 const resolveUrl = require("resolve-url");
 
+class GetLanguages {
 
-function getLanguageSelection() {
-    let defaultLanguageSelection = availableLanguages[0];
-    let preferredLanguage = "";
-    const browserLanguages = navigator.languages || []; //jshint ignore:line
-    console.log('browserLanguages', browserLanguages);
-    browserLanguages.every(languageOption => {
-        let languageResourceOption = availableLanguages.find(availableLanguage => {
-            return availableLanguage === languageOption;
+    constructor(languagesConfigs) {
+        this.languagesConfigs = languagesConfigs;
+    }
+
+    getLanguageSelection() {
+        let defaultLanguageSelection = this.languagesConfigs.default || this.languagesConfigs.available[0];
+        return this.getBrowserPreferredLanguageIfAvailable() || defaultLanguageSelection;
+    }
+
+    getBrowserPreferredLanguageIfAvailable() {
+        let preferredLanguage = "";
+        const browserLanguages = navigator.languages || []; //jshint ignore:line
+        browserLanguages.every(languageOption => {
+            let languageResourceOption = this.languagesConfigs.available.find(availableLanguage => {
+                return availableLanguage === languageOption;
+            });
+            if (languageResourceOption) {
+                preferredLanguage = languageOption;
+                return false;
+            }
+            return true;
         });
-        if (languageResourceOption) {
-            preferredLanguage = languageOption;
-            return false;
-        }
-        return true;
-    });
-    return preferredLanguage || defaultLanguageSelection;
-}
+        return preferredLanguage;
+    }
 
-function getLanguageJSONPromise(done) {
-    request(resolveUrl("app/resourceLanguages/" + getLanguageSelection() + ".json"), {
-        json: true
-    }, function(error, response, body) {
-        if (!error && response.statusCode === 200) {
-            done(body);
-        }
-        done(error);
-    });
+    getLanguageJSONPromise(done) {
+        request(resolveUrl("app/resourceLanguages/" + this.getLanguageSelection() + ".json"), {
+            json: true
+        }, function(error, response, body) {
+            if (!error && response.statusCode === 200) {
+                done(body);
+            }
+            done(error);
+        });
+    }
+
+
+
 }
 
 
@@ -41,7 +52,7 @@ const app = angular.module("resource-languages", []);
 app.service("getLanguageJSON", ($q) => {
     "ngInject";
     const deferred = $q.defer();
-    getLanguageJSONPromise(deferred.resolve);
+    new GetLanguages(languagesConfigsJSON).getLanguageJSONPromise(deferred.resolve);
     return deferred.promise;
 });
 
