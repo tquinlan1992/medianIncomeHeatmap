@@ -1,10 +1,10 @@
 const Server = require('karma').Server;
 
 module.exports = configFile => {
-    return done => {
+    return () => {
         new Server({
             configFile: configFile,
             singleRun: true
-        }, done).start();
+        }).start();
     };
 };
