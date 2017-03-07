@@ -10,6 +10,20 @@ var describe,
     $httpBackend,
     afterEach;
 
+function get$ctrl() {
+    $scope.objectTest = {
+        text: "objectTest is working"
+    };
+
+    element = angular.element("<sample-component-index test='component working' object-test='objectTest'></sample-component-index>");
+
+    $compile(element)($scope);
+    $scope.$digest();
+    $httpBackend.flush();
+    var isolated = element.isolateScope();
+    var $ctrl = isolated.$ctrl;
+    return $ctrl;
+}
 describe('Unit testing sample component', function() {
 
     // Load the myApp module, which contains the directive
@@ -42,17 +56,7 @@ describe('Unit testing sample component', function() {
 
     describe('test controller', function() {
         it("test values", function() {
-            $scope.objectTest = {
-                text: "objectTest is working"
-            };
-
-            element = angular.element("<sample-component-index test='component working' object-test='objectTest'></sample-component-index>");
-
-            $compile(element)($scope);
-            $scope.$digest();
-            $httpBackend.flush();
-            var isolated = element.isolateScope();
-            var $ctrl = isolated.$ctrl;
+            var $ctrl = get$ctrl();
             expect($ctrl).toBeDefined();
             expect($ctrl.test).toEqual("component working");
             expect($ctrl.objectTest).toEqual({
