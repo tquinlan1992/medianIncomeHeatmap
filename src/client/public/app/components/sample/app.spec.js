@@ -6,7 +6,9 @@ var describe,
     $compile,
     $scope,
     element,
-    angular;
+    angular,
+    $httpBackend,
+    afterEach;
 
 describe('Unit testing sample component', function() {
 
@@ -18,9 +20,25 @@ describe('Unit testing sample component', function() {
     beforeEach(inject(function($injector, _$compile_, _$rootScope_) {
         // The injector unwraps the underscores (_) from around the parameter names when matching
         $compile = _$compile_;
+        $httpBackend = $injector.get('$httpBackend');
         $scope = _$rootScope_.$new();
 
+        $httpBackend.when('GET', '/app/envConfigs.json')
+            .respond({
+                serverUrl: '/localhost'
+            });
+        $httpBackend.when('GET', '/localhost/sample.json')
+            .respond({
+                worked: true
+            });
+
     }));
+
+    afterEach(function() {
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+    });
+
 
     describe('test controller', function() {
         it("test values", function() {
@@ -32,6 +50,7 @@ describe('Unit testing sample component', function() {
 
             $compile(element)($scope);
             $scope.$digest();
+            $httpBackend.flush();
             var isolated = element.isolateScope();
             var $ctrl = isolated.$ctrl;
             expect($ctrl).toBeDefined();
@@ -40,6 +59,9 @@ describe('Unit testing sample component', function() {
                 text: "objectTest is working"
             });
             expect(element.html()).toContain("component working");
+            expect($ctrl.sampleJSON).toEqual({
+                worked: true
+            });
             $ctrl.test = "newValue";
             $scope.$digest();
             expect(element.html()).toContain("newValue");
