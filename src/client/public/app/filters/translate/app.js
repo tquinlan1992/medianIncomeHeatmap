@@ -15,7 +15,7 @@ app.filter("translate", (getLanguageJSON) => {
     function filter(input) {
         if (!languageResource) {
             getLanguageJSON.then(result => {
-                languageResource = result;
+                languageResource = result.data;
                 return getResourceValue(input);
             });
             return "language resource file not loaded";

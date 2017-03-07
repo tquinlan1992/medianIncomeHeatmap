@@ -1,4 +1,3 @@
-const request = require('request');
 const languagesConfigsJSON = require("../../resourceLanguages/languagesConfigs.json");
 const resolveUrl = require("resolve-url");
 
@@ -29,15 +28,8 @@ class GetLanguages {
         return preferredLanguage;
     }
 
-    getLanguageJSONPromise(done) {
-        request(resolveUrl("app/resourceLanguages/" + this.getLanguageSelection() + ".json"), {
-            json: true
-        }, function(error, response, body) {
-            if (!error && response.statusCode === 200) {
-                done(body);
-            }
-            done(error);
-        });
+    getLanguageJSONPromise($http) {
+        return $http.get(resolveUrl("app/resourceLanguages/" + this.getLanguageSelection() + ".json"));
     }
 
 
@@ -49,11 +41,9 @@ const angular = require("angular");
 
 const app = angular.module("resource-languages", []);
 
-app.service("getLanguageJSON", ($q) => {
+app.service("getLanguageJSON", ($http) => {
     "ngInject";
-    const deferred = $q.defer();
-    new GetLanguages(languagesConfigsJSON).getLanguageJSONPromise(deferred.resolve);
-    return deferred.promise;
+    return new GetLanguages(languagesConfigsJSON).getLanguageJSONPromise($http);
 });
 
 module.exports = "resource-languages";
