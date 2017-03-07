@@ -10,10 +10,13 @@ const srcClientPath = "./src/client/";
 const srcPublicPath = srcClientPath + "./public/";
 const srcAppPath = srcPublicPath + './app/';
 const createJshintTask = require("./gulpUtil/tasks/jshint");
+const createKarmaTask = require("./gulpUtil/tasks/karma");
 
 gulp.task('jshint', createJshintTask(['src/**/*.js', 'test/**/*.js', 'gulp/**/*.js']));
 
 gulp.task('jshint-src', createJshintTask(['src/**/*.js']));
+
+gulp.task("front-end-tests", createKarmaTask(__dirname + "/frontEndTests.karma.conf.js"));
 
 gulp.task("clean-client-html", createCleanTask([publicBuildAppPath + "**/*.html"]));
 gulp.task("clean-client-js", createCleanTask([
@@ -57,7 +60,7 @@ gulp.task("copy-client", [
 gulp.task("sassify-client", ["clean-client-css-custom"], createSassifyTask.buildMin(srcAppPath + './sass/index.scss', publicBuildAppPath + './css/custom'));
 
 gulp.task('watch-build-client', function() {
-    gulp.watch([srcAppPath + './**/*.js'], ['browserify-client-unminified']);
+    gulp.watch([srcAppPath + './**/*.js', "!./js/**/*spec.js"], ['browserify-client-unminified']);
     gulp.watch([srcAppPath + './**/*.html'], ['copy-html']);
     gulp.watch([srcAppPath + './**/*.json'], ['copy-client-json']);
     gulp.watch([srcClientPath + './server.js', "src/client/server/**/*"], ['copy-server']);
