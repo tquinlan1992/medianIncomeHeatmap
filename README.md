@@ -35,3 +35,5 @@ This is a template that sets up a client server with a gulp build project utiliz
                - This will run the api/mock server defaulting to ```http://localhost:3000```
         6. ```watch-development-environment```
                - This will run both the ```npm run nodemon-client-server-and-watch-build-client``` command and the ```npm run nodemon-api-server``` command
+        7. ```front-end-tests```
+               - This will run the karma, jasmine, angular tests
