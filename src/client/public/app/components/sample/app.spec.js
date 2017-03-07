@@ -8,13 +8,6 @@ var describe,
     element,
     angular;
 
-describe('dummy test', function() {
-    it('has a dummy spec to test 2 + 2', function() {
-        // An intentionally failing test. No code within expect() will never equal 4.
-        expect(2 + 2).toEqual(4);
-    });
-});
-
 describe('Unit testing sample component', function() {
 
     // Load the myApp module, which contains the directive
@@ -46,6 +39,10 @@ describe('Unit testing sample component', function() {
             expect($ctrl.objectTest).toEqual({
                 text: "objectTest is working"
             });
+            expect(element.html()).toContain("component working");
+            $ctrl.test = "newValue";
+            $scope.$digest();
+            expect(element.html()).toContain("newValue");
         });
     });
 });
