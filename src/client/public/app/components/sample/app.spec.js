@@ -68,7 +68,7 @@ describe('Unit testing sample component', function() {
             });
             $ctrl.test = "newValue";
             $scope.$digest();
-            expect(element.html()).toContain("newValue");
+            expect(element.html()).toContain("newValues");
         });
     });
 });
