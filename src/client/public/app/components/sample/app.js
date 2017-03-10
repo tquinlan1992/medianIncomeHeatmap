@@ -10,11 +10,13 @@ app.component("sampleComponentIndex", {
     templateUrl: "/app/components/sample/index.html",
     controller: function(sampleComponentApi) {
         sampleComponentApi.getSampleJson().then(successResponse => {
-                this.sampleJSON = successResponse.data;
-            },
-            errorResponse => {
-                console.log('errorResponse', errorResponse);
-            });
+            this.sampleJSON = successResponse.data;
+        }, errorResponse => {
+            console.log('errorResponse', errorResponse);
+        });
+
+        this.tasks = [1,2,3];
+
     }
 });
 

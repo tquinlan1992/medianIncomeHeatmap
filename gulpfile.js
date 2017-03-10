@@ -11,12 +11,15 @@ const srcPublicPath = srcClientPath + "./public/";
 const srcAppPath = srcPublicPath + './app/';
 const createJshintTask = require("./gulpUtil/tasks/jshint");
 const createKarmaTask = require("./gulpUtil/tasks/karma");
+const createProtractorTask = require("./gulpUtil/tasks/protractor");
 
 gulp.task('jshint', createJshintTask(['src/**/*.js', 'test/**/*.js', 'gulp/**/*.js']));
 
-gulp.task('jshint-src', createJshintTask(['src/**/*.js']));
+gulp.task('jshint-src', createJshintTask(['src/**/*.js', "!src/**/*spec.js"]));
 
-gulp.task("front-end-tests", createKarmaTask(__dirname + "/frontEndTests.karma.conf.js"));
+gulp.task("karma-tests", createKarmaTask(__dirname + "/karma.conf.js"));
+
+gulp.task("protractor-tests", createProtractorTask("./protractor.conf.js"));
 
 gulp.task("clean-client-html", createCleanTask([publicBuildAppPath + "**/*.html"]));
 gulp.task("clean-client-js", createCleanTask([

@@ -16,7 +16,7 @@ module.exports = function(config) {
         files: [
             './build/client/public/app/app.js',
             './node_modules/angular-mocks/angular-mocks.js',
-            './src/client/public/app/components/sample/app.spec.js',
+            './src/client/public/app/components/sample/karma/app.spec.js',
             'build/**/*.html'
         ],
 
@@ -69,7 +69,7 @@ module.exports = function(config) {
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false,
+        singleRun: true,
 
         // Concurrency level
         // how many browser should be started simultaneous
