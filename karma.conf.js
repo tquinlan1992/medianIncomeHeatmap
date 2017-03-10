@@ -16,7 +16,7 @@ module.exports = function(config) {
         files: [
             './build/client/public/app/app.js',
             './node_modules/angular-mocks/angular-mocks.js',
-            './src/client/public/app/components/sample/app.spec.js',
+            './src/client/public/app/components/sample/karma/app.spec.js',
             'build/**/*.html'
         ],
 
