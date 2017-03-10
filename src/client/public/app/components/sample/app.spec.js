@@ -10,7 +10,7 @@ var describe,
     $httpBackend,
     afterEach;
 
-function get$ctrl() {
+function getCtrl() {
     $scope.objectTest = {
         text: "objectTest is working"
     };
@@ -20,9 +20,7 @@ function get$ctrl() {
     $compile(element)($scope);
     $scope.$digest();
     $httpBackend.flush();
-    var isolated = element.isolateScope();
-    var $ctrl = isolated.$ctrl;
-    return $ctrl;
+    return element.isolateScope().$ctrl;
 }
 describe('Unit testing sample component', function() {
 
@@ -52,11 +50,14 @@ describe('Unit testing sample component', function() {
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.verifyNoOutstandingRequest();
     });
+    var $ctrl;
+    beforeEach(function(){
+        $ctrl = getCtrl();
+    });
 
 
     describe('test controller', function() {
         it("test values", function() {
-            var $ctrl = get$ctrl();
             expect($ctrl).toBeDefined();
             expect($ctrl.test).toEqual("component working");
             expect($ctrl.objectTest).toEqual({
@@ -68,7 +69,7 @@ describe('Unit testing sample component', function() {
             });
             $ctrl.test = "newValue";
             $scope.$digest();
-            expect(element.html()).toContain("newValues");
+            expect(element.html()).toContain("newValue");
         });
     });
 });
