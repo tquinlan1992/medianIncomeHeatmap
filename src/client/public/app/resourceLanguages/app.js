@@ -4,7 +4,7 @@ const app = angular.module("getLanguageJSONApp", []);
 
 app.service("getLanguageJSON", () => {
     "ngInject";
-    return require("../../resourceLanguages/inUseResource").data;
+    return require("./inUseResource").data;
 });
 
 module.exports = "getLanguageJSONApp";

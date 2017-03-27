@@ -6,7 +6,7 @@ async.series([
         getLanguageJSON(done);
     },
     done => {
-        require("./appIndex");
+        require("./angularApp");
         done();
     }
 ]);

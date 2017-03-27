@@ -15,9 +15,11 @@ const createProtractorTask = require("./gulpUtil/tasks/protractor");
 
 gulp.task('jshint', createJshintTask(['src/**/*.js', 'test/**/*.js', 'gulp/**/*.js']));
 
+gulp.task('browserify-client-angularApp', createBrowserifyTask.rawJsStream(srcAppPath + './angularApp.js', "app", "./build/test/client/"));
+
 gulp.task('jshint-src', createJshintTask(['src/**/*.js', "!src/**/*spec.js"]));
 
-gulp.task("karma-tests", createKarmaTask(__dirname + "/karma.conf.js"));
+gulp.task("karma-tests", ["browserify-client-angularApp"], createKarmaTask(__dirname + "/karma.conf.js"));
 
 gulp.task("protractor-tests", createProtractorTask("./protractor.conf.js"));
 
