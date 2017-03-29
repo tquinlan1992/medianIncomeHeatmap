@@ -10,6 +10,12 @@ describe('Protractor Demo App', function() {
         expect(browser.getTitle()).toEqual('Angular Gulp Template');
     });
 
+    it('should have a header with the english resource file', function() {
+
+
+        expect(element(by.tagName("h1")).getInnerHtml()).toEqual('Header English');
+    });
+
     it('should have all tasks', function() {
         expect(element.all(by.repeater("x in $ctrl.tasks")).count()).toEqual(3);
     });

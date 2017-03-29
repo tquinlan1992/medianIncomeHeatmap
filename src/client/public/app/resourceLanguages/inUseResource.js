@@ -1,3 +1,3 @@
 module.exports = {
-    data: {}
+    data: require("./en-US.json")
 };
