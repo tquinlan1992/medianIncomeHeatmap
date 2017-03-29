@@ -16,18 +16,6 @@
   },
   "author": "",
   "license": "ISC",
-  "jshintConfig": {
-    "esversion": 6,
-    "curly": true,
-    "forin": true,
-    "eqeqeq": true,
-    "eqnull": true,
-    "latedef": "nofunc",
-    "notypeof": true,
-    "undef": true,
-    "unused": true,
-    "node": true
-  },
   "dependencies": {
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",

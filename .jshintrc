@@ -1,0 +1,12 @@
+{
+    "esversion": 6,
+    "curly": true,
+    "forin": true,
+    "eqeqeq": true,
+    "eqnull": true,
+    "latedef": "nofunc",
+    "notypeof": true,
+    "undef": true,
+    "unused": true,
+    "node": true
+}
