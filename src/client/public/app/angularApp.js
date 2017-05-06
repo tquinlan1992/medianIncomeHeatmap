@@ -6,9 +6,10 @@ angular.module('app', [
     require("angular-material"),
     require('angular-aria'),
     require('angular-messages'),
-    require("./configs/app"),
     require("./components/app"),
     require("./filters/app"),
     require("./services/app"),
+    require("./resourceLanguages/app"),
+    require("./states/app"),
     "envConfigs"
 ]);
