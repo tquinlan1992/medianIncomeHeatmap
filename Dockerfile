@@ -19,7 +19,6 @@ RUN . /etc/profile && \
 	nvm install && \
 	npm install && \
     npm run build-client && \
-	npm run karma-tests &&\
 	mkdir /opt/server && \
 	mkdir /opt/client && \
 	cp -r .nvmrc node_modules src/server/* /opt/server && \
