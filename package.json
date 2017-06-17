@@ -7,6 +7,7 @@
     "build-client": "gulp build-client",
     "watch-build-client": "gulp watch-build-client",
     "nodemon-client-server": "API_SERVER_URL=http://localhost:3000 nodemon build/client/server.js",
+    "node-client-server": "API_SERVER_URL=http://localhost:3000 node build/client/server.js",
     "nodemon-client-server-and-watch-build-client": "concurrently -r 'npm run build-client' 'npm run watch-build-client' 'npm run nodemon-client-server'",
     "nodemon-api-server": "nodemon src/server/server.js",
     "node-api-server": "node src/server/server.js",
