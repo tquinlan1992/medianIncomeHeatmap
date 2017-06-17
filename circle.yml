@@ -1,8 +1,6 @@
 machine:
   services:
     - docker
-  post:
-    - nvm use && nvm alias default $(nvm current)
 
 dependencies:
   override:
