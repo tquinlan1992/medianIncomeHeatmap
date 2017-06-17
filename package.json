@@ -12,7 +12,8 @@
     "watch-development-environment": "concurrently -r 'npm run nodemon-client-server-and-watch-build-client' 'npm run nodemon-api-server'",
     "karma-tests": "gulp karma-tests",
     "protractor-tests": "gulp protractor-tests",
-    "ui-tests": "concurrently -r 'npm run karma-tests' 'npm run protractor-tests'"
+    "ui-tests": "concurrently -r 'npm run karma-tests' 'npm run protractor-tests'",
+    "git-commit-against-master-complexity-report": "cr src"
   },
   "author": "",
   "license": "ISC",
