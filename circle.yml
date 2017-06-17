@@ -1,6 +1,8 @@
 machine:
   services:
     - docker
+  node:
+    version: 6.9.1
 
 dependencies:
   override:
@@ -8,6 +10,9 @@ dependencies:
 
 test:
   override:
+    - npm run git-commit-against-master-complexity-report
+    - npm run build-client
+    - npm run karma-tests
     - docker build --rm=false -t tquinlan1992/angulargulp:$CIRCLE_BRANCH .
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - docker push tquinlan1992/angulargulp:$CIRCLE_BRANCH
