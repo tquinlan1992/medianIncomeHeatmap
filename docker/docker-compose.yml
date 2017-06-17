@@ -7,9 +7,11 @@ services:
       - "3000:3000"
   client:
     image: tquinlan1992/angulargulp:${TAG}
-    command: runClilentServer
+    command: runClientServer
+    environment:
+        API_SERVER_URL: http://localhost:3000
     ports:
-      - "8000:8000"
+      - "8000:3000"
 
 volumes:
   data: {}
