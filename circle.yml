@@ -4,3 +4,6 @@ dependencies:
 test:
   override:
     - npm run karma-tests
+machine:
+  node:
+    version: 6.9.1
