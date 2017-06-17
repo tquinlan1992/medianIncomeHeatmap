@@ -8,7 +8,7 @@
   "maxcost": 50,
   "maxsize": 25,
   "minmi": 100,
-  "maxcyc": 1,
+  "maxcyc": 8,
   "maxcycden": 100,
   "maxhd": 20,
   "maxhv": 500,
