@@ -8,7 +8,7 @@ dependencies:
 
 test:
   override:
-    - docker build -t tquinlan1992/angulargulp:$CIRCLE_BRANCH .
+    - docker build --rm=false -t tquinlan1992/angulargulp:$CIRCLE_BRANCH .
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - docker push tquinlan1992/angulargulp:$CIRCLE_BRANCH
 

@@ -19,9 +19,9 @@ RUN . /etc/profile && \
     npm install && \
 	mkdir /opt/server && \
 	mkdir /opt/client && \
-	npm prune --production && \
 	cp -r .nvmrc node_modules src/server/* /opt/server && \
 	cp -r .nvmrc node_modules build/client/* /opt/client && \
+	npm prune --production && \
 	cp runClientServer.sh /bin/runClientServer && \
 	chmod a+x /bin/runClientServer && \
 	cd /opt/server && \
