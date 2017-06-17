@@ -12,3 +12,6 @@ before_script:
     - npm run nodemon-api-server &
 notifications:
   email: false
+dist: trusty
+addons:
+  chrome: stable
