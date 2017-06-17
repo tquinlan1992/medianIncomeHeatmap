@@ -43,6 +43,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
     "claudia": "^2.1.0",
+    "complexity-report": "^2.0.0-alpha",
     "concurrently": "^2.2.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
