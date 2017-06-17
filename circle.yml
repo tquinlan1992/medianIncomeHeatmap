@@ -1,0 +1,7 @@
+dependencies:
+  pre:
+    - npm install
+
+test:
+  override:
+    - npm run karma-tests
