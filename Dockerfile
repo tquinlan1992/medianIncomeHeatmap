@@ -16,7 +16,7 @@ COPY . /src/
 RUN . /etc/profile && \
 	cd /src && \
 	nvm install && \
-    npm install && \
+    npm run build-client && \
 	mkdir /opt/server && \
 	mkdir /opt/client && \
 	cp -r .nvmrc node_modules src/server/* /opt/server && \
