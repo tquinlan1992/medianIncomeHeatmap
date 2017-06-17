@@ -7,10 +7,10 @@ machine:
 dependencies:
   override:
     - docker info
-    - npm install
 
 test:
   override:
+    - npm install
     - npm run build-client
     - npm run karma-tests
     - docker build --rm=false -t tquinlan1992/angulargulp:$CIRCLE_BRANCH .
