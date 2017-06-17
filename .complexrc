@@ -1,0 +1,9 @@
+
+{
+  "allfiles": false,
+  "ignoreerrors": true,
+  "filepattern": "\\.js$",
+  "dirpattern": "(src)|(tests)",
+  "maxfiles": 256,
+  "maxcyc": 5
+}
