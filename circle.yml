@@ -1,0 +1,10 @@
+dependencies:
+  pre:
+    - npm install
+test:
+  override:
+    - npm run build-client
+    - npm run karma-tests
+machine:
+  node:
+    version: 6.9.1
