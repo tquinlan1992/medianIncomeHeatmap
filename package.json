@@ -15,7 +15,8 @@
     "karma-tests": "gulp karma-tests",
     "protractor-tests": "gulp protractor-tests",
     "ui-tests": "concurrently -r 'npm run karma-tests' 'npm run protractor-tests'",
-    "git-commit-against-master-complexity-report": "cr $(git diff --name-only master...HEAD)"
+    "git-commit-against-master-complexity-report": "cr $(git diff --name-only master...HEAD)",
+    "complexity-report": "cr src tests"
   },
   "author": "",
   "license": "ISC",
