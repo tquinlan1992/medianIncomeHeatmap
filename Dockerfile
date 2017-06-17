@@ -2,6 +2,7 @@ FROM debian
 
 RUN apt-get -y update && apt-get install -y build-essential \
 		wget && \
+		libfontconfig && \
 	\
 	mkdir /usr/local/nvm && \
 	\
