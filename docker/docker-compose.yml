@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  rest:
+    image: tquinlan1992/angulargulp:${TAG}
+    ports:
+      - "3000:3000"
+  client:
+    image: tquinlan1992/angulargulp:${TAG}
+    command: runClientServer
+    environment:
+        API_SERVER_URL: http://localhost:3000
+    ports:
+      - "8000:3000"
+
+volumes:
+  data: {}
