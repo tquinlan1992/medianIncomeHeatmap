@@ -10,7 +10,7 @@ before_script:
     - npm run build-client
     - npm run nodemon-client-server &
     - npm run nodemon-api-server &
-    - /bin/sleep 10
+    - /bin/sleep 30
 notifications:
   email: false
 dist: trusty
