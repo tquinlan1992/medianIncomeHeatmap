@@ -1,7 +1,8 @@
 FROM debian
 
 RUN apt-get -y update && apt-get install -y build-essential \
-		wget && \
+		wget \
+		libfontconfig && \
 	\
 	mkdir /usr/local/nvm && \
 	\
@@ -16,18 +17,20 @@ COPY . /src/
 RUN . /etc/profile && \
 	cd /src && \
 	nvm install && \
-    npm install && \
+	npm install && \
+    npm run build-client && \
+	npm run karma-tests &&\
 	mkdir /opt/server && \
 	mkdir /opt/client && \
-	npm prune --production && \
 	cp -r .nvmrc node_modules src/server/* /opt/server && \
 	cp -r .nvmrc node_modules build/client/* /opt/client && \
+	npm prune --production && \
 	cp runClientServer.sh /bin/runClientServer && \
 	chmod a+x /bin/runClientServer && \
 	cd /opt/server && \
 	rm -rf /src && \
 	apt-get clean && \
-	apt-get purge --auto-remove -y build-essential wget
+	apt-get purge --auto-remove -y build-essential wget libfontconfig
 
 USER TOM
 EXPOSE 3000
