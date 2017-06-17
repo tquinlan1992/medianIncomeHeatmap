@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  rest:
+    image: tquinlan1992/angulargulp:${TAG}
+    ports:
+      - "3000:3000"
+  client:
+    image: tquinlan1992/angulargulp:${TAG}
+    command: runClilentServer
+    ports:
+      - "8000:8000"
+
+volumes:
+  data: {}
