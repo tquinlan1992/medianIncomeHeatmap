@@ -1,6 +1,5 @@
 # Angular-Node-Gulp Template
 
-
 This is a template that sets up a client server with a gulp build project utilizing browserify and a node api server to be used in production or as a mock server.
 
 ### Set up

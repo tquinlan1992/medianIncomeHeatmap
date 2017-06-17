@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
     res.send("hello from the angular-gulp-template api server");
 });
 
-var port = process.env.ADMIN_PORTAL_PORT || 3000;
+var port = process.env.PORT || 3000;
 
 app.listen(port, function(){
   console.log('api server listening on port '+ port);
