@@ -12,7 +12,7 @@ app.get('*', function(req, res) {
     res.sendFile(__dirname + '/public/app/index.html');
 });
 
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 3000;
 
 app.listen(port, function(){
   console.log('client server listening on port '+ port);
