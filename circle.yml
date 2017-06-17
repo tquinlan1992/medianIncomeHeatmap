@@ -1,8 +1,8 @@
 machine:
   services:
     - docker
-  node:
-    version: 6.9.1
+  post:
+    - nvm use && nvm alias default $(nvm current)
 
 dependencies:
   override:
@@ -12,7 +12,7 @@ test:
   override:
     - npm install
     - npm run build-client
-    - npm run karma-tests 
+    - npm run karma-tests
     - docker build --rm=false -t tquinlan1992/angulargulp:$CIRCLE_BRANCH .
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - docker push tquinlan1992/angulargulp:$CIRCLE_BRANCH
