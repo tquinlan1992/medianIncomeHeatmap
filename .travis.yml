@@ -1,7 +1,7 @@
 language: node_js
 node_js:
     - "6.9.1"
-script: npm run karma-tests --single-run
+script: npm run ui-tests --single-run
 addons:
     apt:
         sources:
@@ -16,4 +16,3 @@ before_script:
     - npm run build-client
     - npm run nodemon-client-server
     - npm run nodemon-api-server
-    - npm run ui-tests
