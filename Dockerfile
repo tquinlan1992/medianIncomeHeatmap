@@ -17,7 +17,9 @@ RUN . /etc/profile && \
 	cd /src && \
 	nvm install && \
 	npm install && \
+	npm run git-commit-against-master-complexity-report && \
     npm run build-client && \
+	npm run karma-tests &&\
 	mkdir /opt/server && \
 	mkdir /opt/client && \
 	cp -r .nvmrc node_modules src/server/* /opt/server && \
