@@ -9,6 +9,7 @@
     "nodemon-client-server": "API_SERVER_URL=http://localhost:3000 nodemon build/client/server.js",
     "nodemon-client-server-and-watch-build-client": "concurrently -r 'npm run build-client' 'npm run watch-build-client' 'npm run nodemon-client-server'",
     "nodemon-api-server": "nodemon src/server/server.js",
+    "node-api-server": "node src/server/server.js",
     "watch-development-environment": "concurrently -r 'npm run nodemon-client-server-and-watch-build-client' 'npm run nodemon-api-server'",
     "karma-tests": "gulp karma-tests",
     "protractor-tests": "gulp protractor-tests",
