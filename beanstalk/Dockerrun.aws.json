@@ -2,7 +2,7 @@
     "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [{
             "name": "rest",
-            "image": "tquinlan1992/angulargulp",
+            "image": "tquinlan1992/angulargulp:beanstalk",
             "essential": true,
             "memory": 128,
             "portMappings": [{
@@ -15,7 +15,7 @@
         },
         {
             "name": "ui",
-            "image": "tquinlan1992/angulargulp",
+            "image": "tquinlan1992/angulargulp:beanstalk",
             "command": ["runClientServer"],
             "essential": true,
             "memory": 128,
