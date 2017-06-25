@@ -9,7 +9,7 @@
     "nodemon-client-server": "API_SERVER_URL=http://localhost:3000 nodemon build/client/server.js",
     "node-client-server": "API_SERVER_URL=http://localhost:3000 node build/client/server.js",
     "nodemon-client-server-and-watch-build-client": "concurrently -r 'npm run build-client' 'npm run watch-build-client' 'npm run nodemon-client-server'",
-    "nodemon-api-server": "nodemon src/server/server.js",
+    "nodemon-api-server": "MONGO_URL=localhost:27017 nodemon src/server/server.js",
     "node-a pi-server": "node src/server/server.js",
     "watch-development-environment": "concurrently -r 'npm run nodemon-client-server-and-watch-build-client' 'npm run nodemon-api-server'",
     "karma-tests": "gulp karma-tests",
@@ -38,6 +38,7 @@
     "font-awesome": "^4.5.0",
     "gulp-ng-config": "^1.3.1",
     "lodash": "^4.16.6",
+    "mongoose": "^4.10.8",
     "request": "^2.81.0"
   },
   "devDependencies": {

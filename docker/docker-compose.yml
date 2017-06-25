@@ -1,15 +1,24 @@
 version: '2'
 
 services:
+  db:
+    image: mongo
+    volumes:
+      - data:/data/db
   rest:
     image: tquinlan1992/angulargulp:${TAG}
+    environment:
+        MONGO_URL: db
     ports:
       - "3000:3000"
+    links:
+      - db
   client:
     image: tquinlan1992/angulargulp:${TAG}
     command: runClientServer
     environment:
         API_SERVER_URL: http://localhost:3000
+        PORT: 3000
     ports:
       - "8000:3000"
 

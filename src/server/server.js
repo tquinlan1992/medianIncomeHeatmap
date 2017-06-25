@@ -2,11 +2,21 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const corsOptions = {
   origin: [/.*/],
   credentials: true
 };
+
+mongoose.connect(process.env.MONGO_URL, err => {
+    if (err) {
+        console.error("Error connecting to MONGO_URL: " + process.env.MONGO_URL);
+    } else {
+        console.log("Successfully connected to MONGO_URL: " + process.env.MONGO_URL);
+    }
+});
+
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
