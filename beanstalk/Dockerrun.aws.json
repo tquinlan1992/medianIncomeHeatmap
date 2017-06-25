@@ -1,35 +1,42 @@
 {
-	"AWSEBDockerrunVersion": 2,
-	"containerDefinitions": [
-		{
-			"name": "rest",
-			"image": "tquinlan1992/angulargulp",
-			"essential": true,
-			"memory": 128,
-			"portMappings": [
-				{
-					"hostPort": 3000,
-					"containerPort": 3000
-				}
-			]
-		},
-		{
-			"name": "ui",
-			"image": "tquinlan1992/angulargulp",
-			"command": ["runClientServer"],
-			"essential": true,
-			"memory": 128,
-			"portMappings": [
-				{
-					"hostPort": 80,
-					"containerPort": 3000
-				}
-			]
-		}
-	],
-    "server" :
-    {
-      "auth" : "auth_token",
-      "email" : "email"
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [{
+            "name": "rest",
+            "image": "tquinlan1992/angulargulp",
+            "essential": true,
+            "memory": 128,
+            "portMappings": [{
+                "hostPort": 3000,
+                "containerPort": 3000
+            }],
+            "links": [
+                "db"
+            ]
+        },
+        {
+            "name": "ui",
+            "image": "tquinlan1992/angulargulp",
+            "command": ["runClientServer"],
+            "essential": true,
+            "memory": 128,
+            "portMappings": [{
+                "hostPort": 80,
+                "containerPort": 3000
+            }]
+        },
+        {
+            "name": "db",
+            "image": "mongo",
+            "essential": true,
+            "memory": 128,
+            "portMappings": [{
+                "hostPort": 27017,
+                "containerPort": 27017
+            }]
+        }
+    ],
+    "server": {
+        "auth": "auth_token",
+        "email": "email"
     }
 }
