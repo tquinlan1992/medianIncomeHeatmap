@@ -14,12 +14,14 @@ services:
     links:
       - db
   client:
-    image: tquinlan1992/angulargulp:${TAG}
-    command: runClientServer
+    build:
+      context: ..
+      dockerfile: ./Dockerfile-Client
     environment:
         API_SERVER_URL: http://localhost:3000
     ports:
       - "8000:3000"
-
+    volumes:
+      - ../build/client/public:/opt/client/public
 volumes:
   data: {}
