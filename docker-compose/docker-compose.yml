@@ -22,6 +22,6 @@ services:
     ports:
       - "8000:3000"
     volumes:
-      - ../build/client/public:/opt/client/public
+      - ../build/client:/opt/client
 volumes:
   data: {}

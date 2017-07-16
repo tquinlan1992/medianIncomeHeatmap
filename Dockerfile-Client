@@ -21,6 +21,7 @@ RUN . /etc/profile && \
     npm run build-client && \
 	mkdir /opt/server && \
 	mkdir /opt/client && \
+	cp -r .nvmrc node_modules /opt && \
 	cp -r .nvmrc node_modules src/server/* /opt/server && \
 	cp -r .nvmrc node_modules build/client/* /opt/client && \
 	npm prune --production && \
