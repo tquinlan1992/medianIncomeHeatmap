@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const packageJSON = require('../../package');
+const packageJSON = require('../package');
 const jshintConfig = packageJSON.jshintConfig;
 const jshint = require('gulp-jshint');
 

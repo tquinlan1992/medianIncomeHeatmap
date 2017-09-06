@@ -6,7 +6,7 @@
   "scripts": {
     "build-client": "gulp build-client",
     "watch-build-client": "gulp watch-build-client",
-    "nodemon-client-server": "API_SERVER_URL=http://localhost:3000 nodemon build/client/server.js",
+    "nodemon-client-server": "API_SERVER_URL=http://localhost:3000 CLIENT_PORT=3001 nodemon build/client/server.js",
     "node-client-server": "API_SERVER_URL=http://localhost:3000 node build/client/server.js",
     "nodemon-client-server-and-watch-build-client": "concurrently -r 'npm run build-client' 'npm run watch-build-client' 'npm run nodemon-client-server'",
     "nodemon-api-server": "MONGO_URL=localhost:27017 nodemon src/server/server.js",
@@ -15,7 +15,6 @@
     "karma-tests": "gulp karma-tests",
     "protractor-tests": "gulp protractor-tests",
     "ui-tests": "concurrently -r 'npm run karma-tests' 'npm run protractor-tests'",
-    "git-commit-against-master-complexity-report": "cr $(git diff --name-only master...HEAD)",
     "complexity-report": "cr src tests"
   },
   "author": "",
@@ -28,7 +27,7 @@
     "angular-messages": "^1.5.8",
     "angular-resource": "^1.5.8",
     "angular-translate": "^2.13.0",
-    "angular-ui-router": "^0.3.1",
+    "angular-ui-router": "^1.0.3",
     "animate.css": "^3.5.1",
     "async": "^2.2.0",
     "aws-serverless-express": "^1.3.0",
@@ -52,6 +51,7 @@
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-angular-protractor": "^0.4.2",
+    "gulp-angular-templatecache": "^2.0.0",
     "gulp-jshint": "^2.0.2",
     "gulp-minify-css": "^1.2.4",
     "gulp-ng-annotate": "^2.0.0",

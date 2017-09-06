@@ -1,28 +1,21 @@
-module.exports = [{
-    state: "index.home",
-    url: "/home",
-    views: {
-        "": {
-            templateUrl: "/app/states/index/home.html",
-            controller: ($scope) => {
-                $scope.objectTest = {
-                    text: "objectTest is working"
-                };
+module.exports = [
+    {
+        name: "index.home",
+        url: "/home",
+        views: {
+            "": {
+                component: "home"
+            }
+        }
+    }, {
+        name: "index.testParamId",
+        url: "/testParamId/:idFromParam",
+        component: "sampleUrlParam",
+        resolve: {
+            id: $stateParams => {
+                "ngInject";
+                return $stateParams.idFromParam;
             }
         }
     }
-},
-{
-    state: "index.home.test",
-    url: "/test",
-    views: {
-        "": {
-            templateUrl: "/app/states/index/home.html",
-            controller: ($scope) => {
-                $scope.objectTest = {
-                    text: "objectTest is working"
-                };
-            }
-        }
-    }
-}];
+];

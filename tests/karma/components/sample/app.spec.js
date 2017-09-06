@@ -24,8 +24,7 @@ function getCtrl() {
 }
 describe('Unit testing sample component', function() {
 
-    // Load the myApp module, which contains the directive
-    beforeEach(module("envConfigs", 'sampleComponentModule', 'app.templates'));
+    beforeEach(module("envConfigs", 'sampleComponentModule', "templates"));
 
     // Store references to $rootScope and $compile
     // so they are available to all tests in this describe block

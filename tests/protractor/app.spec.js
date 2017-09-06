@@ -2,7 +2,7 @@
 describe('Protractor Demo App', function() {
 
     beforeEach(function() {
-        browser.get('http://localhost:8000/home');
+        browser.get('http://localhost:3001/home');
     });
     it('should have a title', function() {
 

@@ -7,7 +7,7 @@ app.component("sampleComponentIndex", {
         test: '@',
         objectTest: "="
     },
-    templateUrl: "/app/components/sample/index.html",
+    templateUrl: "components/sample/index.html",
     controller: function(sampleComponentApi) {
         sampleComponentApi.getSampleJson().then(successResponse => {
             this.sampleJSON = successResponse.data;

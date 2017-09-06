@@ -7,9 +7,11 @@ angular.module('app', [
     require('angular-aria'),
     require('angular-messages'),
     require("./components/app"),
-    require("./filters/app"),
-    require("./services/app"),
-    require("./resourceLanguages/app"),
+    require("./templates"),
     require("./states/app"),
+    require("./services/app"),
+    require("./filters/app"),
+    require("./resourceLanguages/app"),
+    require("./configs/app"),
     "envConfigs"
 ]);

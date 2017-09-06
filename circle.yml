@@ -14,16 +14,16 @@ test:
       - npm run complexity-report
       - npm run build-client
       - npm run karma-tests
-      - docker build --rm=false -t tquinlan1992/angulargulp:$CIRCLE_BRANCH .
+      - docker build --rm=false -t $DOCKER_USER/angulargulp:$CIRCLE_BRANCH .
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push tquinlan1992/angulargulp:$CIRCLE_BRANCH
+      - docker push $DOCKER_USER/angulargulp:$CIRCLE_BRANCH
 
 deployment:
   master:
       branch:   master
       commands:
         - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-        - docker tag tquinlan1992/angulargulp:{master,`git describe`}
-        - docker tag tquinlan1992/angulargulp:{master,latest}
-        - docker push tquinlan1992/angulargulp:`git describe`
-        - docker push tquinlan1992/angulargulp:latest
+        - docker tag $DOCKER_USER/angulargulp:{master,`git describe`}
+        - docker tag $DOCKER_USER/angulargulp:{master,latest}
+        - docker push $DOCKER_USER/angulargulp:`git describe`
+        - docker push $DOCKER_USER/angulargulp:latest

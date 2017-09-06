@@ -22,8 +22,10 @@ build
 # npm log files
 npm-debug.log*
 
+<<<<<<< HEAD
 # beanstalk zips
 beanstalk/*.zip
-
+=======
 #coverage
 coverage
+>>>>>>> develop

@@ -20,7 +20,7 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            './build/test/client/app.js', './node_modules/angular-mocks/angular-mocks.js', './src/client/public/app/components/**/*.spec.js', 'build/**/*.html'
+            './build/test/client/app.js', './node_modules/angular-mocks/angular-mocks.js', './tests/karma/**/*.spec.js', 'build/**/*.html'
         ],
 
         // list of files to exclude
@@ -29,13 +29,8 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'build/**/*.html': ['ng-html2js'],
+            'src/client/**/*.html': ['ng-html2js'],
             '/**/*.js': ['coverage']
-        },
-
-        ngHtml2JsPreprocessor: {
-            stripPrefix: "build/client/public",
-            moduleName: "app.templates"
         },
 
         // web server port
