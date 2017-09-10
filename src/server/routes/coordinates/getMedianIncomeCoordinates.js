@@ -108,24 +108,24 @@ class CoordinatesBasedOnCenter {
             longitude: this.centerCoordinate.longitude + (0.5 * valueToIncrement)
         };
         const northWest = {
-            latitude: this.centerCoordinate.latitude - (0.5 * valueToIncrement),
-            longitude: this.centerCoordinate.longitude + (0.5 * valueToIncrement)
-        };
-        const southEast = {
             latitude: this.centerCoordinate.latitude + (0.5 * valueToIncrement),
             longitude: this.centerCoordinate.longitude - (0.5 * valueToIncrement)
+        };
+        const southEast = {
+            latitude: this.centerCoordinate.latitude - (0.5 * valueToIncrement),
+            longitude: this.centerCoordinate.longitude  + (0.5 * valueToIncrement)
         };
         const southWest = {
             latitude: this.centerCoordinate.latitude - (0.5 * valueToIncrement),
             longitude: this.centerCoordinate.longitude - (0.5 * valueToIncrement)
         };
         const west = {
-            latitude: this.centerCoordinate.latitude - valueToIncrement,
-            longitude: this.centerCoordinate.longitude
+            latitude: this.centerCoordinate.latitude,
+            longitude: this.centerCoordinate.longitude - valueToIncrement
         };
         const east = {
-            latitude: this.centerCoordinate.latitude + valueToIncrement,
-            longitude: this.centerCoordinate.longitude
+            latitude: this.centerCoordinate.latitude,
+            longitude: this.centerCoordinate.longitude + valueToIncrement
         };
         return [
             west,

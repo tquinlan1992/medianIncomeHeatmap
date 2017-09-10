@@ -7,7 +7,7 @@ const app = angular.module("states-module", [
 
 app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     "ngInject";
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise("/coordinates");
 
     const states = _.concat(
         [{
