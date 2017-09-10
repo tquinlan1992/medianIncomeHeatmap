@@ -24,6 +24,8 @@ app.get("/", (req, res) => {
     res.send("hello from the angular-gulp-template api server");
 });
 
+app.use("/coordinates", require("./routes/coordinates/router"));
+
 var port = process.env.PORT || 3000;
 
 app.listen(port, function() {

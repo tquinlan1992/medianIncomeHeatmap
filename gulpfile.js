@@ -67,6 +67,8 @@ gulp.task("clean-client-css-custom", createCleanTask(publicBuildAppPath + "./css
 gulp.task('browserify-client-unminified', ["copySrcAppJsToTempToCombineWithTemplateCache", "jshint-src", "clean-client-js", "clean-client-map"], createBrowserifyTask.rawJsStream(tempBuildPathToBrowserifyAppWithTemplateCache + './app.js', "app", publicBuildAppPath));
 gulp.task('browserify-client-minified', ["copySrcAppJsToTempToCombineWithTemplateCache", "jshint-src", "clean-client-js", "clean-client-map"], createBrowserifyTask.minJsStream(tempBuildPathToBrowserifyAppWithTemplateCache + './app.js', "app", publicBuildAppPath));
 
+gulp.task("browserify-heatmap", createBrowserifyTask.rawJsStream(srcPublicPath + './heatmap/app.js', "app", publicBuildPath + "/heatmap"));
+
 gulp.task("copy-server", ["clean-client-server"], createCopyTask(srcClientPath + "./**.js", srcClientPath, clientBuildPath));
 gulp.task("copy-client-json", ["clean-client-json"], createCopyTask(srcPublicPath + "./**/*.json", srcPublicPath, publicBuildPath));
 gulp.task("copy-html", ["clean-client-html"], createCopyTask(srcPublicPath + "./index.html", srcPublicPath, publicBuildPath));
@@ -92,10 +94,12 @@ gulp.task('watch-build-client', function() {
     gulp.watch([srcAppPath + './**/*.json'], ['copy-client-json']);
     gulp.watch([srcClientPath + './server.js', "src/client/server/**/*"], ['copy-server']);
     gulp.watch(srcAppPath + './**/*.scss', ["sassify-client"]);
+    gulp.watch(srcPublicPath + './heatmap/**/*.js', ["browserify-heatmap"]);
 });
 
 gulp.task('build-client', [
     "browserify-client-unminified",
+    "browserify-heatmap",
     "copy-client",
     "sassify-client"
 ]);
