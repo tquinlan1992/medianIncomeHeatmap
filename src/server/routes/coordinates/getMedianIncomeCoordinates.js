@@ -179,7 +179,9 @@ class CoordinatesBasedOnCenter {
     }
 }
 
-function getSortedSlicedCoordinates({centerCoordinate}) {
+
+
+function getSortedSlicedCoordinates({centerCoordinate}, done) {
 
 
     /*const centerCoordinate = {
@@ -227,15 +229,22 @@ function getSortedSlicedCoordinates({centerCoordinate}) {
 
 }
 
+function getPolygonCoordinatesBasedOnCenter(centerCoordinate) {
+    const coordinatesBasedOnCenter = new CoordinatesBasedOnCenter({
+        centerCoordinate,
+        increment: 0.007,
+        rounds: 1
+    });
 
-const mapToLatLng = _.map(coordinatesBasedOnCenter.getPolygonPoints(), point => {
-    return {
-        lat: point.latitude,
-        lng: point.longitude
-    };
-});
+    return _.map(coordinatesBasedOnCenter.getPolygonPoints(), point => {
+        return {
+            lat: point.latitude,
+            lng: point.longitude
+        };
+    });
+}
 
 module.exports = {
-    getSortedSlicedCoordinates
+    getSortedSlicedCoordinates,
+    getPolygonCoordinatesBasedOnCenter
 };
-console.log("mapToLatLng", mapToLatLng);
