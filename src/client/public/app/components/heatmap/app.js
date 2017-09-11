@@ -66,7 +66,8 @@ app.component("heatmap", {
             });
         };
 
-        this.$onInit = function() {
+        this.$onInit = () => {
+            console.log("this.centerCoordinates ",this.centerCoordinates );
             this.initOnCenter(this.centerCoordinates || {
                 lat: 42.358985,
                 lng: -71.058595

@@ -1,7 +1,7 @@
 //const _ = require("lodash");
 
 module.exports = [{
-    name: "index.heatmap",
+    name: "index.heatmapSearch.heatmap",
     url: "/heatmapMedianIncome?latitude?longitude",
     component: "heatmap",
     resolve: {
@@ -9,6 +9,7 @@ module.exports = [{
             "ngInject";
             const latitude = $stateParams.latitude;
             const longitude = $stateParams.longitude;
+            console.log("longitude", longitude);
             if (!isNaN(latitude) && !isNaN(longitude)) {
                 return {
                     lat: Number(latitude),
@@ -17,7 +18,12 @@ module.exports = [{
             }
         }
     }
-},{
+},
+{
+    name: "index.heatmapSearch",
+    url: "/heatmapSearch",
+    component: "heatmapSearch"
+}, {
     name: "index.testParamId",
     url: "/testParamId/:idFromParam",
     component: "sampleUrlParam",
