@@ -1,0 +1,10 @@
+<h1>
+    Saved Heatmaps
+</h1>
+
+<md-list flex>
+    <md-list-item ng-repeat="heatmap in $ctrl.heatmaps" class="md-2-line" ng-click="$ctrl.goToHeatmap(heatmap)">
+        <a> Latitude: {{heatmap.centerCoordinates.latitude}}</a>
+        <a> Longitude: {{heatmap.centerCoordinates.longitude}}</a>
+    </md-list-item>
+</md-list>

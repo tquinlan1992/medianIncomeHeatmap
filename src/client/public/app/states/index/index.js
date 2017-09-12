@@ -2,20 +2,23 @@
 
 module.exports = [{
     name: "index.heatmapSearch.heatmap",
-    url: "/heatmapMedianIncome?latitude?longitude",
+    url: "/heatmapMedianIncome?latitude?longitude?id",
     component: "heatmap",
     resolve: {
         centerCoordinates: ($stateParams) => {
             "ngInject";
             const latitude = $stateParams.latitude;
             const longitude = $stateParams.longitude;
-            console.log("longitude", longitude);
             if (!isNaN(latitude) && !isNaN(longitude)) {
                 return {
                     lat: Number(latitude),
                     lng: Number(longitude)
                 };
             }
+        },
+        heatmapId: ($stateParams) => {
+            const heatmapId = $stateParams.id;
+            return heatmapId;
         }
     }
 },
@@ -23,7 +26,8 @@ module.exports = [{
     name: "index.heatmapSearch",
     url: "/heatmapSearch",
     component: "heatmapSearch"
-}, {
+},
+{
     name: "index.testParamId",
     url: "/testParamId/:idFromParam",
     component: "sampleUrlParam",

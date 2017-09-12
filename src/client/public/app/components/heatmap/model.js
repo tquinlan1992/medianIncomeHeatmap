@@ -3,17 +3,23 @@ const _ = require("lodash");
 
 class HeatmapModel {
     constructor({
-        getHeatmapCoordinatesURL,
-        getPolygonCoordinatesURL
+        getHeatmapCoordinatesPromise,
+        getPolygonCoordinatesPromise,
+        getAddHeatmapPromise,
+        getCoordinatesPromise,
+        getHeatmapPromise
     }) {
         _.assign(this, {
-            getHeatmapCoordinatesURL,
-            getPolygonCoordinatesURL
+            getHeatmapCoordinatesPromise,
+            getPolygonCoordinatesPromise,
+            getAddHeatmapPromise,
+            getCoordinatesPromise,
+            getHeatmapPromise
         });
     }
 
     getHeatmapCoordinates(centerCoordinates, done) {
-        this.getHeatmapCoordinatesURL(centerCoordinates).then(successResponse => {
+        this.getHeatmapCoordinatesPromise(centerCoordinates).then(successResponse => {
             done(null, successResponse.data);
         }, errorResponse => {
             done(errorResponse);
@@ -21,7 +27,31 @@ class HeatmapModel {
     }
 
     getPolygonCoordinates(centerCoordinates, done) {
-        this.getPolygonCoordinatesURL(centerCoordinates).then(successResponse => {
+        this.getPolygonCoordinatesPromise(centerCoordinates).then(successResponse => {
+            done(null, successResponse.data);
+        }, errorResponse => {
+            done(errorResponse);
+        });
+    }
+
+    addHeatmap({medianIncomeCoordinates, polygonCoordinates, centerCoordinates}, done) {
+        this.getAddHeatmapPromise({medianIncomeCoordinates, polygonCoordinates, centerCoordinates}).then(successResponse => {
+            done(null, successResponse.data);
+        }, errorResponse => {
+            done(errorResponse);
+        });
+    }
+
+    getCoordinates(done) {
+        this.getCoordinatesPromise().then(successResponse => {
+            done(null, successResponse.data);
+        }, errorResponse => {
+            done(errorResponse);
+        });
+    }
+
+    getHeatmap(id, done) {
+        this.getHeatmapPromise().then(successResponse => {
             done(null, successResponse.data);
         }, errorResponse => {
             done(errorResponse);
@@ -34,19 +64,40 @@ const app = angular.module("heatmap-model", []);
 app.factory("HeatmapModel", function(getEnvConfigs, $http) {
     "ngInject";
 
-    const getHeatmapCoordinatesURL = centerCoordinates => {
+    const getHeatmapCoordinatesPromise = centerCoordinates => {
         return getEnvConfigs.then(envConfigs => {
             return $http.get(envConfigs.data.serverUrl + "/coordinates/heatmapCoordinates?latitude=" + centerCoordinates.latitude + "&longitude=" + centerCoordinates.longitude);
         });
     };
-    const getPolygonCoordinatesURL = centerCoordinates => {
+    const getPolygonCoordinatesPromise = centerCoordinates => {
         return getEnvConfigs.then(envConfigs => {
             return $http.get(envConfigs.data.serverUrl + "/coordinates/polygonCoordinates?latitude=" + centerCoordinates.latitude + "&longitude=" + centerCoordinates.longitude);
         });
     };
+
+    const getCoordinatesPromise = () => {
+        return getEnvConfigs.then(envConfigs => {
+            return $http.get(envConfigs.data.serverUrl + "/coordinates/");
+        });
+    };
+
+    const getHeatmapPromise = heatmapId => {
+        return getEnvConfigs.then(envConfigs => {
+            return $http.get(envConfigs.data.serverUrl + "/coordinates/" + heatmapId);
+        });
+    };
+
+    const getAddHeatmapPromise = (({medianIncomeCoordinates, polygonCoordinates, centerCoordinates}) => {
+        return getEnvConfigs.then(envConfigs => {
+            return $http.put(envConfigs.data.serverUrl + "/coordinates/", {medianIncomeCoordinates, polygonCoordinates, centerCoordinates});
+        });
+    });
     return new HeatmapModel({
-        getHeatmapCoordinatesURL,
-        getPolygonCoordinatesURL
+        getHeatmapCoordinatesPromise,
+        getPolygonCoordinatesPromise,
+        getAddHeatmapPromise,
+        getCoordinatesPromise,
+        getHeatmapPromise
     });
 
 });
