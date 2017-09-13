@@ -40,3 +40,5 @@ The MEAN stack is used in this project along with gulp and browserify helping th
                - This will run both the ```npm run nodemon-client-server-and-watch-build-client``` command and the ```npm run nodemon-api-server``` command
 	2. Developers who want to make edits on both the back end and front end are recommended to run    ```npm run watch-development-environment```
     3. To run a sample production environment with a node client server and the node API server, run the command ```npm run production-environment```
+               - This will run the client server on port 3001 and the API server on port 3000 ```build/client/public/```
+               - Visiting http://localhost:3001 in your browser will bring you to the home page

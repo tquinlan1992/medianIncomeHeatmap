@@ -7,7 +7,7 @@ const app = angular.module("states-module", [
 
 app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     "ngInject";
-    $urlRouterProvider.otherwise("/heatmapSearch/heatmapMedianIncome");
+    $urlRouterProvider.otherwise("/heatmapSearch/heatmapMedianIncome?latitude=42.3562&longitude=-71.062065");
 
     const states = _.concat(
         [{
