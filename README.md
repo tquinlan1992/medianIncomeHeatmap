@@ -1,14 +1,14 @@
-# Angular-Node-Gulp Template
+# Median Income Heatmap
 
-This is a template that sets up a client server with a gulp build project utilizing browserify and a node api server to be used in production or as a mock server.
+This project hopes to allow you to look at heatmaps of median incomes in areas defined by the user using polygon coordinates.
 
 ### Set up
 
 
- 1.  ```git clone https://github.com/tquinlan1992/angular-gulp.git```
+ 1.  ```git clone https://github.com/tquinlan1992/medianIncomeHeatmap.git```
  2.  Install [NVM](https://github.com/creationix/nvm)
 	 1. Within the cloned repository, run ```nvm install```
-		 - This will install the current node and npm version from the .nvmrc file in the repository
+		 - This will install (or retrieve a local copy) the current node and npm version from the .nvmrc file in the repository
 	 2. Within the cloned repository, run ```nvm install```
           - This will install the current node and npm version from the .nvmrc file in the repository
      3. run ```npm install```
@@ -34,5 +34,5 @@ This is a template that sets up a client server with a gulp build project utiliz
                - This will run the api/mock server defaulting to ```http://localhost:3000```
         6. ```watch-development-environment```
                - This will run both the ```npm run nodemon-client-server-and-watch-build-client``` command and the ```npm run nodemon-api-server``` command
-        7. ```front-end-tests```
-               - This will run the karma, jasmine, angular tests
+	2. Developers who want to make edits on both the back end and front end are recommended to run    ```npm run watch-development-environment```
+    3. To run a sample production environment with a node client server and the node API server, run the command ```npm run production-environment```
