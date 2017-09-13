@@ -19,7 +19,6 @@ class HeatMapModel {
     addHeatmap({medianIncomeCoordinates, polygonCoordinates, centerCoordinates}, done) {
         const newHeatmap = new this.HeatmapMongooseModel({medianIncomeCoordinates, polygonCoordinates, centerCoordinates});
         newHeatmap.save((err, result) => {
-            console.log("err", err);
             if (err) {
                 done("database error");
             } else {
