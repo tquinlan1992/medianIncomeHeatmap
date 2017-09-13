@@ -6,7 +6,8 @@ angular.module("components-module", [
     require("./sampleUrlParam/app"),
     require("./heatmap/app"),
     require("./heatmapSearch/app"),
-    require("./heatmapList/app")
+    require("./heatmapList/app"),
+    require("./heatmapDialogList/app")
 ]);
 
 module.exports = "components-module";

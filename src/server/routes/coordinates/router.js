@@ -41,18 +41,16 @@ router.put('/', (req, res) => {
     const polygonCoordinates = req.body.polygonCoordinates;
     const centerCoordinates = req.body.centerCoordinates;
     heatmapModel.addHeatmap({
-            medianIncomeCoordinates,
-            polygonCoordinates,
-            centerCoordinates
-        }, (err, result) => {
-            console.log("result", result);
-            console.log("err", err);
-            if (err) {
-                res.send(err);
-            } else {
-                res.json(result);
-            }
-        });
+        medianIncomeCoordinates,
+        polygonCoordinates,
+        centerCoordinates
+    }, (err, result) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(result);
+        }
+    });
 });
 
 router.get('/:id', (req, res) => {

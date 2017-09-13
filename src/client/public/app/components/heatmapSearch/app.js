@@ -1,14 +1,13 @@
 const angular = require("angular");
 
-const app = angular.module("heatmap-search", [
-]);
+const app = angular.module("heatmap-search", []);
 
 app.component("heatmapSearch", {
     bindings: {
         centerCoordinates: '<'
     },
     templateUrl: "components/heatmapSearch/index.html",
-    controller: function($state, $stateParams) {
+    controller: function($state, $stateParams, HeatmapDialogList) {
         "ngInject";
         this.$onInit = () => {
             const latitude = $stateParams.latitude;
@@ -25,6 +24,9 @@ app.component("heatmapSearch", {
             }, {
                 reload: 'index.heatmapSearch.heatmap'
             });
+        };
+        this.openSavedHeatmapDialogList = () => {
+            new HeatmapDialogList();
         };
     }
 });
