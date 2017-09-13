@@ -1,6 +1,10 @@
 # Median Income Heatmap
 
-This project hopes to allow you to look at heatmaps of median incomes in areas defined by the user using polygon coordinates.
+This project allows a user to look at heatmaps of median incomes in areas defined by the user using polygon coordinates.  
+
+Currently the project allows a user to set center coordinates and to show a heatmap; though the heatmap is not are accurate at the moment.  The user is able to then save the center coordinates given and load them again at a later point.
+
+The MEAN stack is used in this project along with gulp and browserify helping the build process.
 
 ### Set up
 
