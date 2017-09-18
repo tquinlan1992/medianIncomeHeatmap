@@ -203,7 +203,7 @@ function getSortedSlicedCoordinates({centerCoordinate}, done) {
                 latitude: point.latitude,
                 longitude: point.longitude
             }), function(err, response, body) {
-                const pickedValues = _.pick(JSON.parse(body).Results, ["medianIncome"]);
+                const pickedValues = body ? _.pick(JSON.parse(body).Results, ["medianIncome"]) : {};
                 done(err, _.assign({}, pickedValues, point));
             });
         };
